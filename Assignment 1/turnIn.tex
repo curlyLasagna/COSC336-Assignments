@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{tikz}
+% \usetikzlibrary{shapes.geometric}
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
+\def\qed{\hspace*{\fill}
+        \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+\newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
+                      {\qed \end{trivlist}}
+\newenvironment{solsketch}{\begin{trivlist}\item[]{\bf Solution Sketch:}}
+                      {\qed \end{trivlist}}
+\newenvironment{proof}{\begin{trivlist}\item[]{\bf Proof:}}
+                      {\qed \end{trivlist}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{Assertion}[theorem]{Assertion}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+%\newtheorem{observation}[theorem]{Observation}
+%\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{assumption}[theorem]{Assumption}
+
+%Put more macros here, as needed.
+\newcommand{\al}{\alpha}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\jac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\set}[1]{\{#1\}}
+% Assignment header with the appropriate information
+% 1st arg: Group member names
+% 2nd arg: Assignment #
+\newcommand{\header}[2]{
+  \begin{center}
+	\setlength\fboxsep{.3cm}
+	\fbox{
+		\parbox{\textwidth} {
+			#1 \\
+			COSC 336 \\
+			\today \par
+			\centering{\textbf{\huge{Assignment #2}}}
+		}}
+\end{center}
+}
+
+\def\ppt{{\sf PPT}}
+\def\poly{{\sf poly}}
+\def\negl{{\sf negl}}
+\def\owf{{\sf OWF}}
+\def\owp{{\sf OWP}}
+\def\tdp{{\sf TDP}}
+\def\prg{{\sf PRG}}
+\def\prf{{\sf PRF}}
+
+\begin{document}
+
+\header{Luis Gascon}{0}
+\textbf{Example 1.} We define
+\[S_{n}=1+2+\ldots+n\]
+We present a proof of this formula without induction. We write $S_{n}$ in two ways as follows:
+\begin{align*}
+	S_{n} & = 1 + 2 + \ldots + (n-1) +n  \\
+	S_{n} & = n + (n-1) + \ldots + 2 + 1
+\end{align*}
+Notice that on the right side we have two rows and $n$ columns. In each column the sum of the two numbers is \(n+1\). Indeed, the sum in the first column is \(1 + n = n +1\), in the second column is \(2+(n-1) = n+1\), and so on. \\
+So, if add the two rows we obtain
+\[2S_{n}=(n+1)+(n+1)+\ldots+(n+1) = n \times (n+1)\]
+and therefore \(S_{n}=n(n+1)/2\).
+\vspace*{.5cm} \\
+Of course, there is also a proof by induction, but it is less fun.
+\vspace*{.5cm} \\
+\textbf{Example 2.} The following is a directed graph with 3 vertices and 3 edges: \\
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+		% Draw the vertices with the labels up top
+		\filldraw[black] (0, 0) circle(2pt) node[anchor=south]{a};
+		\filldraw[black] (1.6, 2) circle(2pt) node[anchor=south]{c};
+		\filldraw[black] (3.2, 0) circle(2pt) node[anchor=south]{b};
+		\filldraw[black] (7.04, 0) circle(2pt) node[anchor=south]{d};
+
+		% Draw edges
+		\draw[black, thick] (0, 0) -- (1.6, 2);
+		\draw[black, thick] (1.6, 2) -- (3.2, 0);
+		\draw[black, thick] (0, 0) -- (3.2, 0);
+		\draw[black, thick] (3.2, 0) -- (7.04, 0);
+	\end{tikzpicture}
+\end{figure} \\
+\textbf{Example 3.} Here is formula involving the greek letters \(\alpha, \beta \text{ and } \epsilon \):
+\[\alpha^{2}+\beta^{2}=\epsilon^{2}.\]
+\end{document}
