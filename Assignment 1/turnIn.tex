@@ -5,7 +5,10 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 \usepackage{tikz}
-% \usetikzlibrary{shapes.geometric}
+\usepackage{fontspec}
+\usepackage{fancybox}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
 
 \setlength{\oddsidemargin}{.25in}
 \setlength{\evensidemargin}{.25in}
@@ -49,12 +52,12 @@
 \newcommand{\header}[2]{
   \begin{center}
 	\setlength\fboxsep{.3cm}
-	\fbox{
+	\doublebox{
 		\parbox{\textwidth} {
 			#1 \\
 			COSC 336 \\
 			\today \par
-			\centering{\textbf{\huge{Assignment #2}}}
+			\centering{\huge{Assignment #2}}
 		}}
 \end{center}
 }
@@ -70,6 +73,10 @@
 
 \begin{document}
 
+\setmainfont{Roboto}[
+	BoldFont=*-Bold,
+    UprightFont=*-Light,
+]
 \header{Luis Gascon}{0}
 \textbf{Example 1.} We define
 \[S_{n}=1+2+\ldots+n\]
@@ -85,15 +92,16 @@ and therefore \(S_{n}=n(n+1)/2\).
 \vspace*{.5cm} \\
 Of course, there is also a proof by induction, but it is less fun.
 \vspace*{.5cm} \\
-\textbf{Example 2.} The following is a directed graph with 3 vertices and 3 edges: \\
-\begin{figure}[!h]
+\textbf{Example 2.} The following is a directed graph with 3 vertices and 3 edges:
+\vspace*{-3mm}
+\begin{figure}[htp]
 	\centering
 	\begin{tikzpicture}
 		% Draw the vertices with the labels up top
-		\filldraw[black] (0, 0) circle(2pt) node[anchor=south]{a};
-		\filldraw[black] (1.6, 2) circle(2pt) node[anchor=south]{c};
-		\filldraw[black] (3.2, 0) circle(2pt) node[anchor=south]{b};
-		\filldraw[black] (7.04, 0) circle(2pt) node[anchor=south]{d};
+		\filldraw[black] (0, 0) circle(2pt) node[anchor=south, inner sep=2mm]{a};
+		\filldraw[black] (1.6, 2) circle(2pt) node[anchor=south, inner sep=1.5mm]{c};
+		\filldraw[black] (3.2, 0) circle(2pt) node[anchor=south, inner sep=2mm]{b};
+		\filldraw[black] (7.04, 0) circle(2pt) node[anchor=south, inner sep=1.5mm]{d};
 
 		% Draw edges
 		\draw[black, thick] (0, 0) -- (1.6, 2);
