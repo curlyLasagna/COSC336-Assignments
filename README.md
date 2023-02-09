@@ -1,8 +1,9 @@
 # Data Structures and Algorithm Assignments
 
-- [LuaTex](https://www.luatex.org/) is the Tex engine of choice.  
+## Latex
+- [LuaTex](https://www.luatex.org/) is the Tex engine of choice if you plan to edit LaTeX files locally.  
 
-# Document configuration
+### Document configuration
 | Option            | Value        |
 |:------------------|:-------------|
 | `oddsidemargine`  | .25in        |
@@ -14,9 +15,7 @@
 | Bold font face    | Roboto Bold  |
 | Font size         | 11pt         |
 
-
-
-# Functions
+### Functions
 ```tex
 % Assignment header with the appropriate information
 % 1st arg: Group member names
@@ -34,4 +33,11 @@
 \end{center}
 }
 ```
+
+## Java
+| Option          | Value                                                         |
+|:---------------:|:-------------------------------------------------------------:|
+| Indent          | 4                                                             |
+| Case (optional) | [Snake](https://www.theserverside.com/definition/Snake-case) |
+| Version         | 16.0.1                                                        |
 
