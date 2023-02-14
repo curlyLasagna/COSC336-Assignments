@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{fancybox}
+\usepackage{listings}
+
+\setlength{\oddsidemargin}{.25in}
+\setlength{\evensidemargin}{.25in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-0.4in}
+\setlength{\textheight}{8.5in}
+
+\def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
+\def\qed{\hspace*{\fill}
+        \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+\newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
+                      {\qed \end{trivlist}}
+\newenvironment{solsketch}{\begin{trivlist}\item[]{\bf Solution Sketch:}}
+                      {\qed \end{trivlist}}
+\newenvironment{proof}{\begin{trivlist}\item[]{\bf Proof:}}
+                      {\qed \end{trivlist}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{Assertion}[theorem]{Assertion}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+%\newtheorem{observation}[theorem]{Observation}
+%\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{assumption}[theorem]{Assumption}
+
+%Put more macros here, as needed.
+\newcommand{\al}{\alpha}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\jac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\set}[1]{\{#1\}}
+% Assignment header with the appropriate information
+% 1st arg: Group member names
+% 2nd arg: Assignment #
+\newcommand{\header}[2]{
+  \begin{center}
+	\setlength\fboxsep{.3cm}
+	\doublebox{
+		\parbox{\textwidth} {
+			#1 \\
+			COSC 336 \\
+			\today \par
+			\centering{\huge{Assignment #2}}
+		}}
+\end{center}
+}
+
+\def\ppt{{\sf PPT}}
+\def\poly{{\sf poly}}
+\def\negl{{\sf negl}}
+\def\owf{{\sf OWF}}
+\def\owp{{\sf OWP}}
+\def\tdp{{\sf TDP}}
+\def\prg{{\sf PRG}}
+\def\prf{{\sf PRF}}
+
+\begin{document}
+
+\setmainfont{Roboto}[
+	BoldFont=*-Bold,
+	UprightFont=*-Light,
+]
+\header{Luis Gascon, Ethan Webb, Femi Dosumu}{1}
+
+\textbf{Exercise} \par
+Consider the following three program fragments (a), (b), and (c).
+
+% \lstset{
+% 	mathescape,
+% 	keywords={then, do, for, next, to, end, if},
+% 	tabsize=2,
+% 	autogobble=true
+% }
+\begin{itemize}
+	\item[(a)]
+		\begin{verbatim}
+sum = 0;
+for (int i = 0; i< n ; i++) {
+    	   sum++;
+}
+\end{verbatim}
+
+	\item[(b)]
+		\begin{verbatim}
+sum = 0;
+for (int i = 0; i< 2*n ; i++) {
+    	   sum++;
+}
+\end{verbatim}
+
+	\item[(c)]
+		\begin{verbatim}
+sum = 0;  i=n*n;
+while (i > 1) {
+    	   sum++;
+    	   i= i/2;
+}
+\end{verbatim}
+
+We denote by $T_a(n), T_b(n), T_c(n)$ the running time of the three fragments.
+
+\begin{enumerate}
+\item  Give $\Theta$ evaluations for   $T_a(n), T_b(n), T_c(n)$. \\
+\(T_{a}(n) = \Theta(n)\)
+\item Is  $T_b(n)  = O(T_a(n))$ ? Answer YES or NO and justify your answer.
+\item  Is $T_c(n) = \Theta (T_a(n))$ ?  Answer YES or NO and justify your answer.
+
+
+\end{enumerate}
+
+
+\end{itemize}
+\end{document}
