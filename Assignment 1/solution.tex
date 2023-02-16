@@ -8,6 +8,10 @@
 \usepackage{fontspec}
 \usepackage{fancybox}
 \usepackage{listings}
+\usepackage{enumitem}
+\usepackage{ducksay}
+\usepackage{xcolor}
+\usepackage{amssymb}
 
 \setlength{\oddsidemargin}{.25in}
 \setlength{\evensidemargin}{.25in}
@@ -71,7 +75,6 @@
 \def\prf{{\sf PRF}}
 
 \begin{document}
-
 \setmainfont{Roboto}[
 	BoldFont=*-Bold,
 	UprightFont=*-Light,
@@ -81,17 +84,11 @@
 \textbf{Exercise} \par
 Consider the following three program fragments (a), (b), and (c).
 
-% \lstset{
-% 	mathescape,
-% 	keywords={then, do, for, next, to, end, if},
-% 	tabsize=2,
-% 	autogobble=true
-% }
 \begin{itemize}
 	\item[(a)]
 		\begin{verbatim}
 sum = 0;
-for (int i = 0; i< n ; i++) {
+for (int i = 0; i < n ; i++) {
     	   sum++;
 }
 \end{verbatim}
@@ -99,31 +96,122 @@ for (int i = 0; i< n ; i++) {
 	\item[(b)]
 		\begin{verbatim}
 sum = 0;
-for (int i = 0; i< 2*n ; i++) {
+for (int i = 0; i < 2 * n ; i++) {
     	   sum++;
 }
 \end{verbatim}
 
 	\item[(c)]
 		\begin{verbatim}
-sum = 0;  i=n*n;
+sum = 0;  i = n * n;
 while (i > 1) {
     	   sum++;
     	   i= i/2;
 }
 \end{verbatim}
-
-We denote by $T_a(n), T_b(n), T_c(n)$ the running time of the three fragments.
+\end{itemize}
+\vspace*{5mm} \par
+We denote by $T_a(n),\, T_b(n),\, T_c(n)$ the running time of the three fragments.
 
 \begin{enumerate}
-\item  Give $\Theta$ evaluations for   $T_a(n), T_b(n), T_c(n)$. \\
-\(T_{a}(n) = \Theta(n)\)
-\item Is  $T_b(n)  = O(T_a(n))$ ? Answer YES or NO and justify your answer.
-\item  Is $T_c(n) = \Theta (T_a(n))$ ?  Answer YES or NO and justify your answer.
-
+	\item  Give $\Theta$ evaluations for   $T_a(n), T_b(n), T_c(n)$.
+	      \begin{itemize}[noitemsep,topsep=0pt]
+		      \item \(T_{a}(n) = \Theta(n)\)
+		      \item \(T_{b}(n) = \Theta(n)\)
+		      \item \(T_{c}(n) = \Theta(\log{n} )\)
+	      \end{itemize}
+	\item Is  $T_b(n)  = O(T_a(n))$ ? Answer YES or NO and justify your answer. \par
+	      \vspace{1mm}
+	      Yes, \(t_{b}(n) = O(T_{a}(n))\) because both \(t_{a}(n) \text{ and } t_{b}(n)\)  are  $\Theta(n)$ $\therefore$ \(T_b(n)\) is in the set \(O(n)\) since \(T_b(n)\) "$\leq$" \(O(n)\)
+	\item  Is $T_c(n) = \Theta (T_a(n))$ ?  Answer YES or NO and justify your answer. \par
+	      \vspace{1mm}
+	      No, $T_c(n) \neq \Theta (T_a(n))$ because $T_c(n)$ is $\Theta(\log {n})$ and
+       $T_a(n)$ is $\Theta(n)$ and intuitively, \(T_c(n)\) and \(T_b(n)\) do not scale at the same rate.
 
 \end{enumerate}
+\newpage
+\lstset {
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\ttfamily\footnotesize,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{commentsColor}\textit,    % comment style
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=tblr,	% adds a frame around the code
+        framexleftmargin=1.5em,
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
+	language=Java,                   % the language of the code (can be overrided per snippet)
+	otherkeywords={*,...},           % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{stringColor}, % string literal style
+	tabsize=4,	                   % sets default tabsize to 2 spaces
+	% title=Solution to the Longest increasing subsequence problem,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+	columns=fixed                    % Using fixed column width (for e.g. nice alignment)
+}
+\definecolor{variableColor}{HTML}{AA7700}
+\definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
+\definecolor{keywordsColor}{rgb}{2.2341, 0.000000, 0.500000}
+\definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
+\begin{lstlisting}
+    static int longest_inc_sub(int[] seq) {
+        int N = seq.length;
+        int d[] = new int[N];
+        Arrays.fill(d, 1);
+        for (int i = 1; i < N; i++)
+            for (int j = 0; j < i; j++) {
+                if (seq[j] < seq[i] && d[i] < (d[j] + 1))
+                    d[i] = d[j] + 1;
+            }
 
-
+        // Finding the maximum element from d[] as our solution
+        int max = 0;
+        for(int x = 0; x < d.length; x++) {
+            if (max < d[x])
+                max = d[x];
+        }
+        return max;
+      }
+\end{lstlisting}
+The following are sequences given for our solution to be tested against:
+\begin{itemize}
+\item 10, 9, 2, 5, 3, 101, 7, 18
+\item 186, 359, 274,  927,  890,  520,  571,  310,  916,  798,  732,  23, 196, 579,
+426,188,  524,  991,   91,  150,  117,  565,  993,  615,   48, 811,  594,  303,  191,
+505,  724,  818,  536,  416,  179,  485 , 334  , 74,  998,  100,  197,  768,  421,
+114,  739,  636,  356,  908 , 477,  656
+\item 318 ,  536  , 390  , 598  , 602 ,  408  , 254  , 868 ,  379  , 565  ,  206  ,  619  ,  936  ,  195 ,
+ 123, 314  ,  729 ,  608  , 148 ,  540,   256 ,  768 ,  404  ,  190  ,  559 ,  1000 ,   482  ,  141 ,  26,
+  230  ,  550  ,  881  ,  759  ,  122 ,   878,    350,    756,     82,    562,    897,    508,    853,    317 ,
+  380 ,   807 ,    23 ,   506  ,   98 ,   757 ,   247
 \end{itemize}
+For the sake of brevity, each sequence is labeled as as $Seq_{n}$ in the table below sequentially, which shows the result of our solution for each sequence.
+\begin{center}
+    \begin{tabular}{|c|c|p{10cm}|}
+        \hline
+            Sequence & Result \\
+        \hline
+             $Seq_{1}$ & 4  \\
+        \hline
+             $Seq_{2}$ & 10  \\
+        \hline
+             $Seq_{3}$ & 9  \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{2mm}
+{\Large \textbf{Algorithm description}}
+\vspace{3mm} \\
+We first create an integer array of equal size as the input and initialize all elements as 1, which we declared as $d$. The elements are set to 1 because the minimum increasing sequence has to be 1. $d$ stores the solution for the subproblems that we encounter as $i$ is iterated.
+\vspace{2mm} \\
+The condition checks if the previous element, $j$ is less than the current iterated element, $i$ and whether $d[i]$ is less than $d[j] + 1$ to determine if there are elements greater than any of the previously iterated elements. If the condition passes, we add one to the solution for that index.
+Since we iterate through the elements $n \cdot n$ times, the solution has a runtime of \(O(n^{2})\) using the dynamic programming approach.
 \end{document}

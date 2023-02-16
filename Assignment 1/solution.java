@@ -6,8 +6,8 @@ public class solution {
     /*
      * Complete the 'longest_inc_sub' function below.
      *
-     * The function is expected to return an int. The function accepts int [] seq as
-     * parameter.
+     * The function is expected to return an int.
+     * The function accepts int [] seq as a parameter.
      */
     static int longest_inc_sub(int[] seq) {
         int N = seq.length;
@@ -19,14 +19,15 @@ public class solution {
                     d[i] = d[j] + 1;
             }
 
-        // Finding the maximum solution from d[]
+        // Finding the maximum element from d[] as our solution
         int max = 0;
         for(int x = 0; x < d.length; x++) {
             if (max < d[x])
                 max = d[x];
         }
         return max;
-        // Find the maximum value of d by using Collections.max(), which requires an argument of type List but we have to convert the primitive array to a list first
+        // Find the maximum value of d by using Collections.max(), which requires an argument of type List
+        // We first have to convert the primitive array to a List
         // Using streams, we can convert an array to a list in one line
         // return Collections.max(Arrays
         //                        .stream(d)
