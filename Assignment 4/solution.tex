@@ -74,20 +74,10 @@
 \def\prg{{\sf PRG}}
 \def\prf{{\sf PRF}}
 
-\begin{document}
-\setmainfont{Roboto}[
-	BoldFont=*-Bold,
-	UprightFont=*-Light,
-]
-\header{Luis Gascon, Ethan Webb, Femi Dosumu}{1}
 \definecolor{variableColor}{HTML}{AA7700}
 \definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
 \definecolor{keywordsColor}{rgb}{0.00000, 0.000000, 1.500000}
 \definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
-
-
-
-
 \lstset {
 	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
 	basicstyle=\ttfamily,        % the size of the fonts that are used for the code
@@ -116,4 +106,68 @@
 	% show the filename of files included with \lstinputlisting; also try caption instead of title
 	columns=fixed                    % Using fixed column width (for e.g. nice alignment)
 }
+\begin{document}
+
+\header{Luis Gascon, Ethan Webb, Femi Dosumu}{4}
+\textbf{Exercise 1} \vspace{2mm} \\
+For each of the following functions, give a \(\Theta{(t(n))}\) estimation with the simplest possible \(t(n)\).
+\begin{enumerate}
+  \item \(13n^{2}-2n+56\)
+  \item \(2.5\log{(n)}+2\)
+  \item \(n(12+\log{n})\)
+  \item \(1+2+3+\ldots+2n\)
+  \item \(1+2+3+\ldots+n^2\)
+  \item \(\log{(n^{3})}+10\)
+  \item \(\log{(n^3)}+n\log{n}\)
+  \item \(n\log{(n^3)}+n\log{n}\)
+  \item \(2^{2\log{n}}+5n+1\)
+\end{enumerate}
+\textbf{Exercise 2} \vspace{2mm}
+\begin{enumerate}
+  \item Evaluate the following postfix arithmetic expression: \(10 3 4 - 5 * /\)
+  \item Convert the following infix arithmetic expression to postfix notation: \((((2+3)*5)-15)\)
+\end{enumerate}
+\newpage
+\textbf{Exercise 3} \\ \vspace*{2mm}
+Consider the following algorithms $A$ and $B$ for the problem of computing \(2^n\pmod{317}\)
+\begin{verbatim}
+  Algorithm A.
+  
+  mod_exp_A(n) {
+     if (n == 0) return 1;
+     else {
+            t = mod_exp_A(n/2);  
+            if (n is even) return t*t (mod 317);
+            if (n is odd) return t*t*2 (mod 317);
+  }}
+  \end{verbatim}
+  
+  \begin{verbatim}
+  Algorithm B.
+  
+  mod_exp_B(n) {
+     if (n == 0) return 1;
+     else {
+            if (n is even) 
+              return mod_exp_B(n/2) * mod_exp_B(n/2) (mod 317);
+            if (n is odd) 
+              return mod_exp_B(n/2) * mod_exp_B(n/2) *2 (mod 317);
+  }}
+  \end{verbatim}
+  \begin{enumerate}
+    \item Write the reucrrence for the runtime \(T_{A}(n)\) of algorithm $A$ and solve the recurrence to find a \(\Theta(\cdot)\) estimation of \(T_{A}(n)\)
+    \item Write the recurrence for the runtime \(T_B(n)\) of algorithm $B$, and solve the recurrence to find a \(\Theta(\cdot)\) estimation of \(T_B(n)\).
+    \item Which algorithm is faster?
+  \end{enumerate}
+  \newpage
+  \textbf{Exercise 4} \vspace{2mm} \\
+  Give a \(\Theta(\cdot)\) evaluation for the runtime of the following code:
+  \begin{lstlisting}[numbers=none, keywordstyle=\bfseries, frame=none, title={Assume that $n$ is a power two. Then $i$ from the outer loop takes successively the values: \(1, \: 2, \: 2^2, \: 2^3, \: \ldots, 2^{\log{n}}\)}]
+    i= 1; x=0;
+    while(i <= n) {
+          j=1;
+          while (j <= i) { x=x+1; j= 2*j; }
+          i= 2*i;
+   }       
+  \end{lstlisting}
 \end{document}
