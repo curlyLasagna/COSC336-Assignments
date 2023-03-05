@@ -10,13 +10,18 @@ public class solution {
   /*
    * This is a modified version of a standard merge function. This function
    * returns the number of star pairs within the array. Star-pairs must meet the
-   * following conditions: a[i] < a[j] and i < j
+   * following conditions: a[i] < a[j] and i < j where i and j are indices
+   * 
    * @param a: The list to be merged
+   * 
    * @param mid: The middle index of the array
+   * 
    * @param left: The starting index of the array
+   * 
    * @param right: The last index of the array
    */
-  public static int merge(List<Integer> a, int left, int mid, int right, int star_pairs) {
+  public static int merge(List<Integer> a, int left, int mid, int right) {
+    int star_pairs = 0;
     int l_length = mid - left + 1;
     int r_length = right - mid;
     int[] l_arr = new int[l_length];
@@ -27,10 +32,12 @@ public class solution {
 
     for (int i = 0; i < r_length; i++)
       r_arr[i] = a.get(mid + 1 + i);
-    /*i = index for left
-      j = index for right
-      k = current index of the sorted array
-     */ 
+
+    /*
+     * i = index for left
+     * j = index for right
+     * k = current index of the sorted array
+     */
     int i, j, k;
     i = j = 0;
     k = left;
@@ -62,17 +69,16 @@ public class solution {
   }
 
   static int mergeSort(List<Integer> a, int left, int right, int star_pairs) {
+    int mid = (left + right) / 2;
     if (left < right) {
-      int mid = (left + right) / 2;
-
       // Sort left half of the array
-      mergeSort(a, left, mid, star_pairs);
+      star_pairs = mergeSort(a, left, mid, star_pairs);
 
       // Sort right half of the array
-      mergeSort(a, mid + 1, right, star_pairs);
+      star_pairs = mergeSort(a, mid + 1, right, star_pairs);
 
       // Merge the arrays
-      merge(a, left, mid, right, star_pairs);
+      star_pairs += merge(a, left, mid, right);
     }
     return star_pairs;
   }
@@ -93,25 +99,17 @@ public class solution {
     List<Integer> data35 = Stream.of(input35.readLine().replaceAll("\\s+$", "").split(" ")).map(Integer::parseInt)
         .collect(Collectors.toList());
 
+    
     // Store results
     List<Integer> results = new ArrayList<>();
     results.add(mergeSort(data, 0, data.size() - 1, 0));
-    // results.add(mergeSort(data34, 0, size_34 - 1, 0));
-    // results.add(mergeSort(data35, 0, size_35 - 1, 0));
+    results.add(mergeSort(data34, 0, size_34 - 1, 0));
+    results.add(mergeSort(data35, 0, size_35 - 1, 0));
 
     results.stream().forEach(result -> {
       System.out.printf("Star pairs: %d%n", result);
     });
-
-    // mergeSort(data, 0, data.size() - 1);
-    // System.out.printf("Star pairs: %d%n", star_pairs);
-
-    // mergeSort(data34, 0, size_34 - 1);
-    // System.out.printf("Star pairs: %d%n", star_pairs);
-
-    // mergeSort(data35, 0, size_35 - 1);
-    // System.out.printf("Star pairs: %d%n", star_pairs);
-
+    
     input34.close();
     input35.close();
   }
