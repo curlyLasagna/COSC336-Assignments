@@ -16,7 +16,8 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{parskip}
-\usepackage{subfig}
+\usepackage{tabularray}
+\usepackage{subcaption}
 \graphicspath{ {./images/} }
 \setlength{\oddsidemargin}{.25in}
 \setlength{\evensidemargin}{.25in}
@@ -24,6 +25,7 @@
 \setlength{\topmargin}{-0.4in}
 \setlength{\textheight}{8.5in}
 \setlength{\parindent}{0cm}
+\UseTblrLibrary{booktabs}
 
 \def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
 \def\qed{\hspace*{\fill}
@@ -176,13 +178,49 @@ while(i >= 1) {
 	\end{lstlisting}
 \end{itemize} \par
 \newpage
-To obtain the correct amount of star pairs, we only had to modify the merge() function so that it increments the star-pair value if it meets the condition for a pair to be a star pair.
 
 \begin{figure}
-	\centering
-	\begin{minipage}{\textwidth}
-		\raisebox{-0.5\height}{\includegraphics*[width=.5\linewidth]{merge.png}}
-		\raisebox{-0.5\height}{\includegraphics*[width=.5\linewidth]{mergeSort.png}}
-	\end{minipage}	
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{merge.png}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.2\linewidth]{mergeSort.png}
+\end{minipage}
+\noindent
+\begin{minipage}[t]{.49\textwidth}
+  \centering
+  \captionof{figure}{merge}
+  \label{fig:test1}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{.49\textwidth}
+  \centering
+  \captionof{figure}{mergeSort}
+  \label{fig:test2}
+\end{minipage}
 \end{figure}
+
+\textbf{\large{Modifications to merge()}} \\
+To obtain the correct amount of star pairs, we only had to modify the merge() function so that it increments the star-pair value if it meets the condition for a pair to be a star pair and at the end of the function, return that value. During the comparison stage of merge, we added an incremental counter whenever the element in the left is less than the one in the right.
+\vspace{5mm}\\
+\textbf{\large{Modifications to mergeSort()}} \\
+The merge function is modified so it can keep track of the number of star pairs per recursive call. When mergeSort is called again, the return value from the previous recursive call is stored as the star pair variable. When it's time to merge, the star pair variable gets added by the return value of the merge function. After the base case has been satisfied, the number of star pairs is returned.
+\vspace{3mm} \\
+\begin{center}
+	\begin{tblr}{| l | c |}
+		\hline
+		Array                      & Result \\
+		\toprule
+		\([7, 3, 8, 1, 5]\)        & \(4\)  \\
+		\hline
+		Input with 1000 elements   & 4,376  \\
+		\hline
+		Input with 10,000 elements & 61,321 \\
+		\hline
+	\end{tblr} \vspace{5mm} \\
+	The source code for the algorithm is located on the next page.
+\end{center}
 \end{document}

@@ -107,7 +107,6 @@
 	columns=fixed                    % Using fixed column width (for e.g. nice alignment)
 }
 \begin{document}
-
 \header{Luis Gascon, Ethan Webb, Femi Dosumu}{4}
 \textbf{Exercise 1} \vspace{2mm} \\
 For each of the following functions, give a \(\Theta{(t(n))}\) estimation with the simplest possible \(t(n)\).
@@ -128,7 +127,8 @@ For each of the following functions, give a \(\Theta{(t(n))}\) estimation with t
   \item Convert the following infix arithmetic expression to postfix notation: \((((2+3)*5)-15)\)
 \end{enumerate}
 \newpage
-\textbf{Exercise 3} \\ \vspace*{2mm}
+\noindent
+\textbf{Exercise 3} \vspace*{2mm} \\ 
 Consider the following algorithms $A$ and $B$ for the problem of computing \(2^n\pmod{317}\)
 \begin{verbatim}
   Algorithm A.
@@ -160,14 +160,17 @@ Consider the following algorithms $A$ and $B$ for the problem of computing \(2^n
     \item Which algorithm is faster?
   \end{enumerate}
   \newpage
+  \noindent
   \textbf{Exercise 4} \vspace{2mm} \\
   Give a \(\Theta(\cdot)\) evaluation for the runtime of the following code:
-  \begin{lstlisting}[numbers=none, keywordstyle=\bfseries, frame=none, title={Assume that $n$ is a power two. Then $i$ from the outer loop takes successively the values: \(1, \: 2, \: 2^2, \: 2^3, \: \ldots, 2^{\log{n}}\)}]
-    i= 1; x=0;
-    while(i <= n) {
-          j=1;
-          while (j <= i) { x=x+1; j= 2*j; }
-          i= 2*i;
-   }       
-  \end{lstlisting}
+  \begin{center}
+    \begin{lstlisting}[numbers=none, keywordstyle=\bfseries, frame=none, title={Assume that $n$ is a power two. Then $i$ from the outer loop takes successively the values: \(1, \: 2, \: 2^2, \: 2^3, \: \ldots, 2^{\log{n}}\)}]
+      i= 1; x=0;
+      while(i <= n) {
+            j=1;
+            while (j <= i) { x=x+1; j= 2*j; }
+            i= 2*i;
+     }       
+    \end{lstlisting}  
+  \end{center}
 \end{document}
