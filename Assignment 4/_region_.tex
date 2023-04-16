@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\message{ !name(solution.tex)}\documentclass[11pt]{article}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{latexsym}
@@ -86,7 +86,7 @@
 	captionpos=b,                    % sets the caption-position to bottom
 	commentstyle=\color{commentsColor}\textit,    % comment style
 	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-	frame=none,	% adds a frame around the code
+	frame=tblr,	% adds a frame around the code
 	framexleftmargin=1.5em,
 	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
 	keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
@@ -107,6 +107,9 @@
 	columns=fixed                    % Using fixed column width (for e.g. nice alignment)
 }
 \begin{document}
+
+\message{ !name(solution.tex) !offset(-3) }
+
 \header{Luis Gascon, Ethan Webb, Femi Dosumu}{4}
 \textbf{Exercise 1} \vspace{2mm} \\
 For each of the following functions, give a \(\Theta{(t(n))}\) estimation with the simplest possible \(t(n)\).
@@ -197,76 +200,6 @@ Give a \(\Theta(\cdot)\) evaluation for the runtime of the following code:
     \end{lstlisting}
 	\[ \Theta{(\log^{2}{n})} \]
 \end{center}
- % Write exercise here
-
-\noindent
-The getMaxArea method finds the largest rectangular area possible in a given histogram. The histogram is represented by an array of heights (arr) and an array of corresponding widths. The variable n represents the length of both arrays.
-The algorithm starts by creating an empty stack of integers and pushes the indices onto it. It then initializes two arrays, left\_smaller and right\_smaller, with default values of -1 and n, respectively, that represents the left and right sides of each histogram bar.
-For each element arr[i], it pops elements from the top of the stack until the top element is smaller than arr[i] or the stack is empty. For each popped element, it sets the corresponding index in the right\_smaller array to i-1. It then sets the value of left\_smaller[i] to either the index at the top of the stack or i if the stack is empty. Finally, it pushes i onto the stack.
-After the loop completes, the method calculates the area of the largest rectangle by iterating over each element of arr and calculating the area of the rectangle with that element as the height. It uses the left\_smaller and right\_smaller arrays to determine the width of the rectangle. It keeps track of the largest area it has found so far and returns the maximum area within the histogram.
-\begin{center}
-    \begin{tabular}{|c|c|}
-        \hline
-        Input & Output \\
-        \hline
-         input-4.1 & 26  \\
-         \hline
-         input-4.2 & 12 \\
-         \hline
-         input-4.3 & 12 \\
-         \hline
-         input-4.4 & 1,474,869 \\
-         \hline
-    \end{tabular}
-\end{center}
-\begin{lstlisting}
-public static int getMaxArea(String file) throws FileNotFoundException {
-    int n = 0;
-    int count = 0;
-    Scanner inputFile = new Scanner(new File(file));
-
-    n = inputFile.nextInt();
-    inputFile.nextLine();
-    int[] histX = new int[n];
-    int[] arr = new int[n];
-
-    while (inputFile.hasNext()) {
-      histX[count] = inputFile.nextInt();
-      arr[count] = inputFile.nextInt();
-      count++;
-    }
-
-    Stack<Integer> s = new Stack<>();
-    s.push(0);
-    int max_area = arr[0];
-    int left_smaller[] = new int[n];
-    int right_smaller[] = new int[n];
-    for (int i = 0; i < n; i++) {
-      left_smaller[i] = -1;
-      right_smaller[i] = n;
-    }
-
-    int i = 0;
-    while (i < arr.length) {
-      while (!s.empty() && s.peek() != -1 && arr[i] < arr[s.peek()]) {
-        right_smaller[s.peek()] = (int) i - 1;
-        s.pop();
-      }
-      if (i > 0 && arr[i] == arr[(i - 1)]) {
-        left_smaller[i] = left_smaller[(int) (i - 1)];
-      } else {
-        left_smaller[i] = (s.peek() == -1 ? i : s.peek());
-      }
-      s.push(i);
-      i++;
-    }
-
-    for (i = 0; i < n; i++) {
-      max_area = Math.max(max_area,
-          arr[i] * ((right_smaller[i] == histX.length ? histX[right_smaller[i] - 1] : histX[right_smaller[i]])
-              - histX[left_smaller[i]]));
-    }
-    return max_area;
-  }
-\end{lstlisting}
 \end{document}
+
+\message{ !name(solution.tex) !offset(-205) }

@@ -333,3 +333,4 @@ replay_pid*
 .frontmatter/
 frontmatter.json
 
+/.vscode/
