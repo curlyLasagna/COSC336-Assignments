@@ -46,40 +46,23 @@ public class Text_Adj {
     // Segment related to the solution //
 
     /**
-     * By exploiting the behaviour of BFS traversal, we modify it by adding a
-     * conditional that satisfies the definition of a squared graph
+     * Adds a
      *
      * @param g Adj_List_Graph
      * @return A modified Adj_List_Graph where
      */
-    static Adj_List_Graph squaredGraph(Adj_List_Graph g) {
-        Adj_List_Graph result = new Adj_List_Graph(g.n);
+    static Adj_List_Graph squaredGraph(Adj_List_Graph a) {
+        Adj_List_Graph res = new Adj_List_Graph(a.n);
 
-        // For each node in g, find all the nodes that can be reached with a path of
-        // length 1 or 2
-        for (int i = 0; i < g.n; i++) {
-            boolean[] visited = new boolean[g.n];
-            Queue<Integer> q = new LinkedList<>();
-            q.add(i);
-            visited[i] = true;
-
-            while (!q.isEmpty()) {
-                int node = q.remove();
-
-                // Check if the current node is 1 or 2 edges away from the starting node
-                if (node != i && (node - i == 1 || node - i == 2))
-                    result.addEdge(i, node);
-
-                // Add the unvisited neighbors of the current node to the queue
-                for (int neighbor : g.adj.get(node)) {
-                    if (!visited[neighbor]) {
-                        q.add(neighbor);
-                        visited[neighbor] = true;
-                    }
-                }
+        for (int i = 0; i < a.n; i++) {
+            for (int neighbor : a.adj.get(i)) {
+                res.addEdge(i, neighbor);
+                for (int neighborsNeighbor : a.adj.get(neighbor))
+                    res.addEdge(i, neighborsNeighbor);
             }
         }
-        return result;
+
+        return res;
     }
 
     /**
@@ -101,9 +84,10 @@ public class Text_Adj {
         Inputs b = readInput("./input-7-2.txt");
         Adj_List_Graph input_71 = generate_graph(a.adjacency_matrix, a.vertex_count);
         Adj_List_Graph input_72 = generate_graph(b.adjacency_matrix, b.vertex_count);
+        input_71.printGraph();
         input_72.printGraph();
         System.out.println("\nSquared graph");
-        // squaredGraph(input_71).printGraph();
+        squaredGraph(input_71).printGraph();
         squaredGraph(input_72).printGraph();
     }
 }

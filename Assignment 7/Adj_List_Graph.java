@@ -23,35 +23,6 @@ public class Adj_List_Graph {
     // adj.get(v).add(u);
   }
 
-  // @param s starting node
-  ArrayList BFS(int s) {
-    boolean visited[] = new boolean[this.n];
-
-    // Stores traversed nodes
-    ArrayList<Integer> path = new ArrayList<Integer>();
-    LinkedList<Integer> queue = new LinkedList<Integer>();
-
-    // Mark the current node as visited and enqueue it
-    visited[s] = true;
-    queue.add(s);
-
-    while (queue.size() != 0) {
-
-      // Dequeue a vertex from queue and add it to path
-      s = queue.poll();
-      path.add(s);
-
-      for (int n : this.adj.get(s)) {
-        if (!visited[n]) {
-          visited[n] = true;
-          queue.add(n);
-        }
-      }
-    }
-
-    return path;
-  }
-
   // A utility function to print the adjacency list
   // representation of graph
   public void printGraph() {
