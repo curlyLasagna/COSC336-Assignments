@@ -19,16 +19,16 @@ public class Adj_List_Graph {
   // undirected graph; for directed graph remove the second line
   public void addEdge(int u, int v) {
     adj.get(u).add(v);
-    // adj.get(v).add(u); //this line should be un-commented, if graph is
-    // undirected
+    // this line should be un-commented, if graph is undirected
+    // adj.get(v).add(u);
   }
 
-  public ArrayList BFS(Adj_List_Graph a, int V, int s) {
-    boolean visited[] = new boolean[V];
+  // @param s starting node
+  ArrayList BFS(int s) {
+    boolean visited[] = new boolean[this.n];
 
+    // Stores traversed nodes
     ArrayList<Integer> path = new ArrayList<Integer>();
-
-    // Create a queue for BFS
     LinkedList<Integer> queue = new LinkedList<Integer>();
 
     // Mark the current node as visited and enqueue it
@@ -40,9 +40,8 @@ public class Adj_List_Graph {
       // Dequeue a vertex from queue and add it to path
       s = queue.poll();
       path.add(s);
-      // System.out.print(s + " ");
 
-      for (int n : a.adj.get(s)) {
+      for (int n : this.adj.get(s)) {
         if (!visited[n]) {
           visited[n] = true;
           queue.add(n);
@@ -52,9 +51,9 @@ public class Adj_List_Graph {
 
     return path;
   }
+
   // A utility function to print the adjacency list
   // representation of graph
-
   public void printGraph() {
     for (int i = 0; i < n; i++) {
       System.out.println("\nAdjacency list of vertex " + i);
