@@ -29,13 +29,13 @@
 
 \def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
 \def\qed{\hspace*{\fill}
-        \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+	\vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
 \newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
-                      {\qed \end{trivlist}}
+		{\qed \end{trivlist}}
 \newenvironment{solsketch}{\begin{trivlist}\item[]{\bf Solution Sketch:}}
-                      {\qed \end{trivlist}}
+		{\qed \end{trivlist}}
 \newenvironment{proof}{\begin{trivlist}\item[]{\bf Proof:}}
-                      {\qed \end{trivlist}}
+		{\qed \end{trivlist}}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -62,16 +62,16 @@
 % 1st arg: Group member names
 % 2nd arg: Assignment #
 \newcommand{\header}[2]{
-\begin{center}
- \setlength\fboxsep{.3cm}
- \doublebox{
-  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule} {
-    #1 \\
-    COSC 336 \\
-    \today \par
-    \centering{\huge{Assignment #2}}
-    }}
-\end{center}
+	\begin{center}
+		\setlength\fboxsep{.3cm}
+		\doublebox{
+			\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule} {
+				#1 \\
+				COSC 336 \\
+				\today \par
+				\centering{\huge{Assignment #2}}
+			}}
+	\end{center}
 }
 
 \def\ppt{{\sf PPT}}
@@ -87,41 +87,227 @@
 \definecolor{keywordsColor}{rgb}{0.00000, 0.000000, 1.500000}
 \definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
 \lstset {
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-basicstyle=\ttfamily,        % the size of the fonts that are used for the code
-breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-breaklines=true,                 % sets automatic line breaking
-captionpos=b,                    % sets the caption-position to bottom
-commentstyle=\color{commentsColor}\textit,    % comment style
-extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-frame=tblr, % adds a frame around the code
-% framexleftmargin=1.5em,
-keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
-language=Java,                   % the language of the code (can be overrided per snippet)
-otherkeywords={*,...},           % if you want to add more keywords to the set
-numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
-numbersep=5pt,                   % how far the line-numbers are from the code
-numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
-rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-showstringspaces=false,          % underline spaces within strings only
-showtabs=false,                  % show tabs within strings adding particular underscores
-stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-stringstyle=\color{stringColor}, % string literal style
-tabsize=2,                   % sets default tabsize to 2 spaces
-% title=Solution to the Longest increasing subsequence problem,
-% show the filename of files included with \lstinputlisting; also try caption instead of title
-columns=fixed                    % Using fixed column width (for e.g. nice alignment)
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{commentsColor}\textit,    % comment style
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=tblr, % adds a frame around the code
+	% framexleftmargin=1.5em,
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
+	language=Java,                   % the language of the code (can be overrided per snippet)
+	otherkeywords={*,...},           % if you want to add more keywords to the set
+	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{stringColor}, % string literal style
+	tabsize=2,                   % sets default tabsize to 2 spaces
+	% title=Solution to the Longest increasing subsequence problem,
+	% show the filename of files included with \lstinputlisting; also try caption instead of title
+	columns=fixed                    % Using fixed column width (for e.g. nice alignment)
 }
 \begin{document}
 \header{Luis Gascon, Ethan Webb, Femi Dosumu}{7}
 \textbf{Exercise 1.} Show similarly to Fig 8.3 on page 198 in the textbook, how \textsf{RadixSort} sorts the following arrays:
+\SetTblrInner{
+	hlines, % draw horizontal lines
+	colsep=3.5pt,
+}
 \begin{enumerate}
-  \item 34, 9134, 20134, 29134, 4, 134
-  \item 4, 34, 134, 9134, 20134, 29134
-  \item 29134, 20134, 9134, 134, 34, 4
+	\item 34, 9134, 20134, 29134, 4, 134
+	      \begin{center}
+		      \begin{tblr}{colspec={|ccccQ[c, cyan, m]|}}
+			      % table content
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cccQ[c, cyan]c|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|ccQ[c, cyan]cc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cQ[c, cyan]ccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|Q[c, cyan]cccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+	      \end{center}
+	\item 4, 34, 134, 9134, 20134, 29134
+	      \begin{center}
+		      \begin{tblr}{
+			      colspec={|ccccQ[c, cyan, m]|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cccQ[c, cyan]c|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|ccQ[c, cyan]cc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cQ[c, cyan]ccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|Q[c, cyan]cccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+	      \end{center}
+	\item 29134, 20134, 9134, 134, 34, 4
+	      \begin{center}
+		      \begin{tblr}{
+			      colspec={|ccccQ[c, cyan, m]|},
+			      }
+			      % table content
+			      2 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 0 & 0 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cccQ[c, cyan]c|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|ccQ[c, cyan]cc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|cQ[c, cyan]ccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+		      \rightarrowfill
+		      \begin{tblr}{
+			      colspec={|Q[c, cyan]cccc|},
+			      }
+			      % table content
+			      0 & 0 & 0 & 0 & 4 \\
+			      0 & 0 & 0 & 3 & 4 \\
+			      0 & 0 & 1 & 3 & 4 \\
+			      0 & 9 & 1 & 3 & 4 \\
+			      2 & 0 & 1 & 3 & 4 \\
+			      2 & 9 & 1 & 3 & 4 \\
+		      \end{tblr}
+	      \end{center}
 \end{enumerate}
+
 \newpage
 \textbf{Exercise 2.} Present an $O(n)$ algorithm that sorts $n$ positive integer numbers  $a_1, a_2, \ldots, a_n$ which are known to be bounded by $n^2-1$ (so $0 \leq a_i \leq n^2-1$, for every $i=1, \ldots, n$. Use the idea of textbook).
 
@@ -132,4 +318,247 @@ Illustrate your algorithm by showing on paper similar to Fig. 8.3, page 198 in t
 45, 98, 3, 82, 132, 71, 72, 143, 91, 28, 7, 45.
 
 In this example $n=12$, because there are $12$ positive numbers in the sequence bounded by $143 = 12^2 - 1$.
+
+The formula that gives the appropriate base $k$ can be obtained by taking the value of $n$ and setting $k$ to $n$. The reason why this works is because of the constraint that the values are bounded by \(n^{2}-1\).
+
+Converting the base 10 numbers to base $k$ can be done recursively done with following algorithm in pseudo-code:
+\begin{lstlisting}
+def decTo_nBase(el, n) -> String:
+  # Assume that we have a list of characters with the appropriate encoding of base k.
+  encodingCharArray[0 ... k]
+  if x == 0:
+      return ""
+  remainder = x % n
+  return decTo_nBase(x / n) + encodingCharArray[remainder]
+\end{lstlisting}
+We can then run this function for each element in the array so we'll have an array of converted values of base $k$.
+\newpage
+To illustrate the correctness of our formula, we'll test it on our example set of 12 integers
+\begin{center}
+	\begin{tblr}{
+			colspec={|ccc|},
+		}
+		0 & 4 & 5 \\
+		0 & 9 & 8 \\
+		0 & 0 & 3 \\
+		0 & 8 & 2 \\
+		1 & 3 & 2 \\
+		0 & 7 & 1 \\
+		0 & 7 & 2 \\
+		1 & 4 & 3 \\
+		0 & 9 & 1 \\
+		0 & 2 & 8 \\
+		0 & 0 & 7 \\
+		0 & 4 & 5 \\
+	\end{tblr}
+	\rightarrow
+	\begin{tblr}{
+		colspec={|ccQ[c, cyan]|},
+		}
+		0 & 7 & 1 \\
+		0 & 9 & 1 \\
+		0 & 8 & 2 \\
+		1 & 3 & 2 \\
+		0 & 7 & 2 \\
+		0 & 0 & 3 \\
+		1 & 4 & 3 \\
+		0 & 4 & 5 \\
+		0 & 4 & 5 \\
+		0 & 0 & 7 \\
+		0 & 9 & 8 \\
+		0 & 2 & 8 \\
+	\end{tblr}
+	\rightarrow
+	\begin{tblr}{
+		colspec={|cQ[c, cyan]c|},
+		}
+		0 & 0 & 7 \\
+		0 & 0 & 3 \\
+		0 & 2 & 8 \\
+		1 & 3 & 2 \\
+		1 & 4 & 3 \\
+		0 & 4 & 5 \\
+		0 & 4 & 5 \\
+		0 & 7 & 1 \\
+		0 & 7 & 2 \\
+		0 & 8 & 2 \\
+		0 & 9 & 1 \\
+		0 & 9 & 8 \\
+	\end{tblr}
+	\rightarrow
+	\begin{tblr}{
+		colspec={|Q[c, cyan]cc|},
+		}
+		0 & 0 & 3 \\
+		0 & 0 & 7 \\
+		0 & 2 & 8 \\
+		0 & 4 & 5 \\
+		0 & 4 & 5 \\
+		0 & 7 & 1 \\
+		0 & 7 & 2 \\
+		0 & 8 & 2 \\
+		0 & 9 & 1 \\
+		0 & 9 & 8 \\
+		1 & 3 & 2 \\
+		1 & 4 & 3 \\
+	\end{tblr}
+\end{center}
+
+If we convert our set to base 12, we should get the same result. To make it easy to follow the Radix sorting procedure, the base 10 representations are in parentheses and should be ignored by Radix sort.
+
+\begin{center}
+	\begin{tblr}{
+			colspec={|ccc|},
+		}
+		3 & A & (45)  \\
+		8 & 2 & (98)  \\
+		0 & 3 & (3)   \\
+		6 & A & (82)  \\
+		B & 0 & (132) \\
+		5 & B & (71)  \\
+		6 & 0 & (72)  \\
+		B & B & (143) \\
+		7 & 7 & (91)  \\
+		2 & 4 & (28)  \\
+		0 & 7 & (7)   \\
+		3 & A & (39)
+	\end{tblr}
+	\rightarrow
+	\begin{tblr}{
+		colspec={|cQ[c, cyan]c|},
+		}
+		B & 0 & (132) \\
+		6 & 0 & (72)  \\
+		8 & 2 & (98)  \\
+		0 & 3 & (3)   \\
+		2 & 4 & (28)  \\
+		7 & 7 & (91)  \\
+		0 & 7 & (7)   \\
+		3 & 9 & (45)  \\
+		3 & 9 & (45)  \\
+		6 & A & (82)  \\
+		5 & B & (71)  \\
+		B & B & (143) \\
+	\end{tblr}
+	\rightarrow
+	\begin{tblr}{
+		colspec={|Q[c, cyan]cc|},
+		}
+		0 & 3 & (3)   \\
+		0 & 7 & (7)   \\
+		2 & 4 & (28)  \\
+		3 & 9 & (45)  \\
+		3 & A & (45)  \\
+		5 & B & (71)  \\
+		6 & 0 & (72)  \\
+		6 & A & (82)  \\
+		7 & 7 & (91)  \\
+		8 & 2 & (98)  \\
+		B & 0 & (132) \\
+		B & B & (143) \\
+	\end{tblr}
+\end{center}
+\newpage
+\textbf{Programming Task.} \\
+Our inputs consists of an integer on the first line that gives us the number of nodes that are in our graph and the nodes are labeled from \(0 \ldots n\) and the next line is an array that is an adjacency matrix to represent the edges in our graph.
+
+To start, we first have to create an object of \verb|Adj_List_Graph|. We've created a function that reads in the integer array of the adjacency matrix. The function then returns an object of \verb|Adj_List_Graph| that we can use as our starting graph $G$.
+\begin{lstlisting}
+static Adj_List_Graph generate_graph(List<Integer> seq, int vertices) {
+     Adj_List_Graph a = new Adj_List_Graph(vertices);
+     for (int x = 0; x < seq.size(); x++)
+         if (seq.get(x) == 1)
+             a.addEdge(x / vertices, x % vertices);
+     return a;
+    }
+\end{lstlisting}
+
+The algorithm starts off by creating a graph with the same nodes as the graph $G$, which we called $a$ in our function definition, so we call the constructor with the value of \verb|n| of $a$.
+\begin{lstlisting}
+Adj_List_Graph res = new Adj_List_Graph(a.n);
+\end{lstlisting}
+
+Iteration starts by iterating through each nodes of the graph.
+\begin{lstlisting}
+for (int i = 0; i < a.n; i++) {...}
+\end{lstlisting}
+
+
+To replicate the argument graph $G$, we add the same edges that \(G\) has for the respective node by iterating the list of a.
+
+\begin{lstlisting}
+  for (int i = 0; i < a.n; i++) {
+    // Iterate through each list of adj
+    for (int neighbor : a.adj.get(i)) {
+        // Add the same edges that the parameter have to our new Adj_List_Graph
+        res.addEdge(i, neighbor);
+        ...
+\end{lstlisting}
+
+After iterating through the neighbor of the node$_{i}$, we iterate through the neighbors of the neighboring nodes, and add the neighbor's neighbor nodes, which would have a length of 2.
+\begin{lstlisting}
+for (int neighborsNeighbor : a.adj.get(neighbor))
+    res.addEdge(i, neighborsNeighbor);
+\end{lstlisting}
+
+\newpage
+The algorithm in its entirety
+\begin{lstlisting}
+static Adj_List_Graph squaredGraph(Adj_List_Graph a) {
+  Adj_List_Graph res = new Adj_List_Graph(a.n);
+
+  // Iterate through each nodes
+  for (int i = 0; i < a.n; i++) {
+      // Iterate through each list of adj
+    for (int neighbor : a.adj.get(i)) {
+          // Add the same edges that the parameter have to our new Adj_List_Graph
+          res.addEdge(i, neighbor);
+          // Add edges to the nodes that are connected to the node that's connected to the
+          // current node
+          for (int neighborsNeighbor : a.adj.get(neighbor))
+              res.addEdge(i, neighborsNeighbor);
+      }
+  }
+    return res;
+}
+\end{lstlisting}
+The algorithm outputs the following by calling the function \verb|printGraph()| for each input:
+\begin{figure}[!htbp]
+	\begin{minipage}{0.5\textwidth}
+		\begin{verbatim}
+Squared graph from input-7-1.txt
+
+Adjacency list of vertex 0
+head -> 1 -> 2
+
+Adjacency list of vertex 1
+head -> 2
+
+Adjacency list of vertex 2
+head
+    \end{verbatim}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{verbatim}
+Squared graph from input-7-2.txt
+
+Adjacency list of vertex 0
+head -> 1 -> 2 -> 3
+
+Adjacency list of vertex 1
+head -> 2 -> 3 -> 4
+
+Adjacency list of vertex 2
+head
+
+Adjacency list of vertex 3
+head -> 4
+
+Adjacency list of vertex 4
+head
+    \end{verbatim}
+	\end{minipage}
+\end{figure}
+\newpage
+
 \end{document}

@@ -46,22 +46,27 @@ public class Text_Adj {
     // Segment related to the solution //
 
     /**
-     * Adds a
+     * Creates a modified Adj_List_Graph from the parameter Adj_List_Graph g and
+     * adds edges to nodes that are 1 or 2 edges away.
      *
-     * @param g Adj_List_Graph
-     * @return A modified Adj_List_Graph where
+     * @param g Adj_List_Graph to be
+     * @return A modified Adj_List_Graph
      */
     static Adj_List_Graph squaredGraph(Adj_List_Graph a) {
         Adj_List_Graph res = new Adj_List_Graph(a.n);
 
+        // Iterate through each nodes
         for (int i = 0; i < a.n; i++) {
+            // Iterate through each list of adj
             for (int neighbor : a.adj.get(i)) {
+                // Add the same edges that the parameter have to our new Adj_List_Graph
                 res.addEdge(i, neighbor);
+                // Add edges to the nodes that are connected to the node that's connected to the
+                // current node
                 for (int neighborsNeighbor : a.adj.get(neighbor))
                     res.addEdge(i, neighborsNeighbor);
             }
         }
-
         return res;
     }
 
@@ -82,12 +87,12 @@ public class Text_Adj {
     public static void main(String[] args) throws IOException {
         Inputs a = readInput("./input-7-1.txt");
         Inputs b = readInput("./input-7-2.txt");
+
         Adj_List_Graph input_71 = generate_graph(a.adjacency_matrix, a.vertex_count);
         Adj_List_Graph input_72 = generate_graph(b.adjacency_matrix, b.vertex_count);
-        input_71.printGraph();
-        input_72.printGraph();
-        System.out.println("\nSquared graph");
+        System.out.println("Squared graph from input-7-1.txt");
         squaredGraph(input_71).printGraph();
+        System.out.println("Squared graph from input-7-2.txt");
         squaredGraph(input_72).printGraph();
     }
 }
