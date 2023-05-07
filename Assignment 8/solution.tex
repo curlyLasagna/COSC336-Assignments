@@ -18,6 +18,8 @@
 \usepackage{parskip}
 \usepackage{tabularray}
 \usepackage{subcaption}
+\usepackage{tikz-qtree}
+\usetikzlibrary{automata,arrows}
 \graphicspath{ {./images/} }
 \setlength{\oddsidemargin}{.25in}
 \setlength{\evensidemargin}{.25in}
@@ -140,4 +142,115 @@ We have seen that Dijkstra's algorithm can be implemented in two ways: Variant (
 
 (b) Suppose in your application $m \ge n^2/3$. Which variant gives a faster runtime?  Justify your answer.
 \newpage
+
+Our algorithm starts off by initializing two integer arrays \verb|dist| and \verb|npath|.
+
+\begin{lstlisting}
+int[] dist = new int[g.n];
+int[] npath = new int[g.n];
+
+for (int i = 0; i < g.n; i++) {
+    dist[i] = Integer.MAX_VALUE;
+    npath[i] = 0;
+}
+\end{lstlisting}
+
+I've set the undiscovered nodes to have a distance of infinity, and in this case, the maximum integer value that Java supports.
+
+\newpage
+The algorithm in its entirety.
+\begin{lstlisting}
+static void getShortestPath(Adj_List_Graph g, int s) {
+  int[] dist = new int[g.n];
+  int[] npath = new int[g.n];
+
+  for (int i = 0; i < g.n; i++) {
+      dist[i] = Integer.MAX_VALUE;
+      npath[i] = 0;
+  }
+
+  Queue<Integer> queue = new LinkedList<Integer>();
+
+  dist[s] = 0;
+  npath[s] = 1;
+  queue.add(s);
+  while (!queue.isEmpty()) {
+      int p = queue.poll();
+      List<Integer> neighbors = g.adj.get(p);
+      for (int v : neighbors) {
+          if (dist[v] == Integer.MAX_VALUE) {
+              dist[v] = dist[p] + 1;
+              npath[v] = npath[p];
+              queue.add(v);
+          }
+
+          else if (dist[v] == dist[p] + 1)
+              npath[v] += npath[p];
+
+      }
+  }
+
+  for (int index = 1; index < g.n; index++)
+      System.out.printf("dist[%d] = %d \t npath[%d] = %d%n",
+              index, dist[index], index, npath[index]);
+
+}
+\end{lstlisting}
+
+Program output can be found on the next page.
+\newpage
+\begin{lstlisting}
+G1 results:
+
+dist[1] = 0 	 npath[1] = 1
+dist[2] = 1 	 npath[2] = 1
+dist[3] = 1 	 npath[3] = 1
+dist[4] = 1 	 npath[4] = 1
+dist[5] = 2 	 npath[5] = 2
+dist[6] = 2 	 npath[6] = 1
+dist[7] = 3 	 npath[7] = 3
+
+G2 results:
+
+dist[1] = 0 	 npath[1] = 1
+dist[2] = 1 	 npath[2] = 1
+dist[3] = 1 	 npath[3] = 1
+dist[4] = 1 	 npath[4] = 1
+dist[5] = 1 	 npath[5] = 1
+dist[6] = 1 	 npath[6] = 1
+dist[7] = 2 	 npath[7] = 5
+dist[8] = 3 	 npath[8] = 5
+dist[9] = 3 	 npath[9] = 5
+\end{lstlisting}
+To visually reflect one of our solutions, namely dist[7] and npath[7] of \verb|G2|, we'll highlight the paths.
+\begin{center}
+  \begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.0cm,scale=0.3]][h]
+    %\begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm]][h]
+    \node[state] (1) {$1$};
+    \node[state] (2) [below left of =1] {$2$};
+    \node[state] (3) [right of=2] {$3$};
+    \node[state] (4) [right of=3] {$4$};
+    \node[state] (5) [right of=4] {$5$};
+    \node[state] (6) [right  of=5] {$6$};
+    \node[state] (7) [below of=4] {$7$};
+    \node[state] (8) [below of=7] {$8$};
+    \node[state] (9) [right of =8] {$9$};
+
+    \path[-]
+    (1) edge (2)
+    (1) edge (3)
+    (1) edge (4)
+    (1) edge (5)
+    (1) edge (6)
+    (7) edge (2)
+    (7) edge (3)
+    (7) edge (4)
+    (7) edge (5)
+    (7) edge (6)
+    (7) edge (8)
+    (7) edge (9)
+    ;
+
+  \end{tikzpicture}
+\end{center}
 \end{document}
