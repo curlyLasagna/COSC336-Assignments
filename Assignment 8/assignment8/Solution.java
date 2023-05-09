@@ -36,17 +36,16 @@ public class Solution {
             // Dequeue node
             int p = queue.poll();
             // Neighbors of node 'p'
-            List<Integer> neighbors = g.adj.get(p);
-            for (int v : neighbors) {
+            for (int v : g.adj.get(p)) {
                 if (dist[v] == Integer.MAX_VALUE) {
 
                     dist[v] = dist[p] + 1;
-                    // Set the number of shortest path equal to the 
+                    // Set the number of shortest path equal of the current node to the shortest path of 
                     npath[v] = npath[p];
                     queue.add(v);
                 }
 
-                //
+                // We have found a path 
                 else if (dist[v] == dist[p] + 1)
                     npath[v] += npath[p];
 
@@ -54,7 +53,7 @@ public class Solution {
         }
 
         // Print out the arrays
-        for (int index = 1; index < g.n; index++)
+        for (int index = 2; index < g.n; index++)
             System.out.printf("dist[%d] = %d \t npath[%d] = %d%n",
                     index, dist[index], index, npath[index]);
 
